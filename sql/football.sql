@@ -11,7 +11,6 @@ CREATE TABLE users (
     name VARCHAR(100) NOT NULL,                  -- 사용자 이름 또는 닉네임
     role ENUM('admin', 'user') DEFAULT 'user',   -- 사용자 역할
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 생성 시간
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- 업데이트 시간
 );
 
 
