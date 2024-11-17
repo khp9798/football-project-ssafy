@@ -14,5 +14,4 @@ public class User {
     private String name; // 사용자 이름
     private String role; // 사용자 역할
     private LocalDateTime createdAt; // 생성 시간
-    private LocalDateTime updatedAt; // 업데이트 시간
 }
