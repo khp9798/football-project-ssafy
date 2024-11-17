@@ -75,7 +75,7 @@ jobs:
         run: |
           npm install # 의존성 설치
           npm run build # Vue.js 프로젝트 빌드
-        working-directory: ./frontend # 프론트엔드 소스 코드가 위치한 디렉토리 지정
+        working-directory: ./frontend/football-ssafit # 프론트엔드 소스 코드가 위치한 디렉토리 지정
 
   deploy: # 배포 관련 작업 정의
     name: Deploy Backend and Frontend
