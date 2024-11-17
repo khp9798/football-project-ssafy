@@ -31,10 +31,27 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Install MySQL Client
+        run: sudo apt-get update && sudo apt-get install -y mysql-client
+
+      - name: Wait for MySQL to be ready
+        run: |
+          until mysqladmin ping -h 127.0.0.1 -P 3306 --silent; do
+            echo "Waiting for MySQL...";
+            sleep 2;
+          done
+
+      - name: Apply SQL initialization script
+        env:
+          MYSQL_PWD: root
+        run: |
+          mysql -h 127.0.0.1 -P 3306 -u root testdb < sql/football.sql
+
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '17'
+          distribution: 'temurin'
 
       - name: Build and Test with Maven
         run: mvn clean verify
@@ -68,7 +85,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy Backend
-        run: echo "Deploying Spring Boot backend..."
-
-      - name: Deploy Frontend
-        run: echo "Deploying Vue.js frontend..."
+   
