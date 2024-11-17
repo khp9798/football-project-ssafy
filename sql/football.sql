@@ -10,7 +10,7 @@ CREATE TABLE users (
     phone_number VARCHAR(15),                    -- 전화번호 (선택)
     name VARCHAR(100) NOT NULL,                  -- 사용자 이름 또는 닉네임
     role ENUM('admin', 'user') DEFAULT 'user',   -- 사용자 역할
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 생성 시간
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 생성 시간
 );
 
 
