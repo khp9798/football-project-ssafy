@@ -53,6 +53,7 @@ jobs:
         uses: actions/setup-java@v3 # Java 설치를 위한 GitHub Actions 작업 사용
         with:
           java-version: '17' # Java 17 버전 사용
+          working-directory: ./backend
           distribution: 'temurin' # OpenJDK의 Temurin 배포판 사용
 
       - name: Build and Test with Maven # Maven 빌드 및 테스트 실행
