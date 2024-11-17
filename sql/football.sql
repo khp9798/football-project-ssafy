@@ -1,6 +1,7 @@
 CREATE DATABASE if not exists flapfootball;
 USE flapfootball;
 
+
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,           -- 시스템 내부 고유 식별자
     userid VARCHAR(50) NOT NULL UNIQUE,        -- 로그인용 아이디
