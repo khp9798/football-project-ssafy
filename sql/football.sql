@@ -1,5 +1,10 @@
+
 DROP SCHEMA if exists football;
 CREATE SCHEMA if not exists football;
+
+
+
+
 use football;
 
 CREATE TABLE users (
