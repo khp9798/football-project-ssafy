@@ -5,6 +5,7 @@ import java.util.List;
 import com.ssafy.mvc.dto.Match;
 import com.ssafy.mvc.dto.MatchSearch;
 
+
 public interface MatchDao {
 	
 	//새로운 경기 등록

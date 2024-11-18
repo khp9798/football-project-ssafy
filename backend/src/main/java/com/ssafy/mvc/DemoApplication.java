@@ -3,7 +3,7 @@ package com.ssafy.mvc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "com.ssafy.mvc")
+@SpringBootApplication
 public class DemoApplication {
 
 	public static void main(String[] args) {
