@@ -1,4 +1,4 @@
-DROP SCHEMA football;
+
 CREATE SCHEMA football;
 use football;
 
