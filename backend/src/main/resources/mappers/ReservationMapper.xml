@@ -28,7 +28,7 @@
     </delete>
 
     <!-- 특정 사용자의 예약 조회 -->
-    <select id="selectListByUser" parameterType="int" resultType="com.ssafy.mvc.dto.ReservationDTO">
+    <select id="selectListByUser">
         SELECT id, user_id, match_id, reservation_date, created_at, updated_at
         FROM reservations
         WHERE user_id = #{userId};
