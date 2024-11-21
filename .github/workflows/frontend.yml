@@ -19,13 +19,15 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
+        working-directory: frontend/football-ssafit
         run: npm install
 
       - name: Build project
+        working-directory: frontend/football-ssafit
         run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist  # Vite 빌드 결과물이 저장되는 디렉토리
+          publish_dir: frontend/football-ssafit/dist  # Vite 빌드 결과물이 저장되는 디렉토리
