@@ -44,7 +44,7 @@
                 <!-- 닮은 선수 -->
                 <div class="col-md-4 text-center">
                     <h6>나와 닮은 선수</h6>
-                    <img src="../../assets/Son.PNG" alt="Logo" width="180rem" height="260rem">
+                    <img src="../../assets/Son.png" alt="Logo" width="180rem" height="260rem">
                 </div>
             </div>
         </div>
