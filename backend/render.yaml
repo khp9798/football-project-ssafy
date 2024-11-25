@@ -4,3 +4,6 @@ services:
     env: java
     buildCommand: "./mvnw clean package"
     startCommand: "java -jar target/demo-0.0.1-SNAPSHOT.jar"
+    branch: main
+    region: oregon
+    rootDir: backend
