@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.mvc.dao.ReservationDao">
+
+    <!-- 예약 삽입 -->
+    <insert id="insertReservation">
+        INSERT INTO reservations (user_id, match_id)
+        VALUES (#{userId}, #{matchId});
+    </insert>
+
+
+    <!-- 예약 삭제 -->
+    <delete id="deleteReservation">
+        DELETE FROM reservations
+        WHERE id = #{id};
+    </delete>
+
+    <!-- 특정 사용자의 예약 조회 -->
+    <select id="selectListByUser">
+        SELECT r.id, r.user_id, r.match_id, r.reservation_date, r.updated_at, m.name, m.start_time, m.end_time, m.status
+        FROM reservations r, matches m
+        WHERE r.user_id =  #{userId} and  m.id = r.match_id;
+    </select>
+
+
+	<select id="selectOne">
+		SELECT r.id, r.user_id, r.reservation_date, r.updated_at, m.name
+        FROM reservations r, matches m
+        WHERE r.id =  #{id} and  m.id = r.match_id;
+	</select>
+	
+	
+	<select id="ListByMatchId">
+		select * from reservations
+		where match_id = #{matchId}
+	</select>
+</mapper>
+
