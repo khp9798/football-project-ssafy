@@ -1,13 +1,16 @@
 package com.ssafy.mvc.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.ssafy.mvc.dto.KLeaguePlayers;
 import com.ssafy.mvc.dto.UserStat;
@@ -80,13 +84,9 @@ public class UserStatController {
 				stamina += list.get(i).getStamina();
 				dribble += list.get(i).getDribble();
 			}
-			Map<String, Integer> stat = new HashMap<>();
-			stat.put("shoot", shoot /= size);
-			stat.put("pass", pass /= size);
-			stat.put("speed", speed /= size);
-			stat.put("stamina", stamina /= size);
-			stat.put("dribble", dribble /= size);
-//			System.out.println(stat);
+			
+			UserStat stat = new UserStat(0, null, 0, shoot/=size, pass/=size, speed/=size, stamina/=size, dribble/=size, null, null, null);
+			System.out.println(stat);
 			return new ResponseEntity<>(stat, HttpStatus.OK);
 		}
 		return new ResponseEntity<>("스텟 전체 조회에 실패했습니다", HttpStatus.NOT_FOUND);
@@ -132,10 +132,12 @@ public class UserStatController {
 			System.out.println(players);
 			Random random = new Random();
 			KLeaguePlayers player = players.get(random.nextInt(players.size()));
-			return new ResponseEntity<>(player,HttpStatus.OK);
-			
+			return new ResponseEntity<>(player, HttpStatus.OK);
+
 		}
-		return new ResponseEntity<>("실패했어요 ㅠㅠ",HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>("실패했어요 ㅠㅠ", HttpStatus.NOT_FOUND);
 	}
+
+	
 
 }

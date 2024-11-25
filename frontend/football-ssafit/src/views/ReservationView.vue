@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h2>예약 확인 뷰입니다.</h2>
         <ReservationList v-if="userstore.loginUser.userid"/>
     </div>
 </template>
@@ -13,6 +12,6 @@ const userstore = useUserStore()
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>

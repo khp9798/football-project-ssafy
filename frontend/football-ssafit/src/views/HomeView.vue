@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- 유저뷰, 매치뷰 -->
         <UserItem/>
         <MatchRecommandList class="mt-5"/>
     </div>

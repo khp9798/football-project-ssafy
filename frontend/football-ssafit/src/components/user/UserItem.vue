@@ -1,51 +1,46 @@
 <template>
     <div class="container mt-5">
+        <h2 class="mb-4">유저 능력치</h2>
 
-        <h5 class="mb-4">유저 능력치</h5>
+        <!-- 로그인한 유저 정보 -->
+        <div class="card p-4 shadow d-flex" v-if="userstore.loginUser.userid">
+            <div class="row align-items-center">
 
-        <div class="card p-4 shadow" v-if="userstore.loginUser.userid">
-            <div class="row row-cols-md-2">
                 <!-- 유저 정보 -->
-                <div>
-                    <h4>이름</h4>
-                    <p>{{ userstore.loginUser.name }}</p>
-                    <h4>포지션</h4>
-                    <p>{{ userstore.loginUser.position }}</p>
-                    <h4>티어</h4>
-                    <p>{{ userstore.loginUser.tier }}</p>
+                <div class="col-md-3 text-center">
+                    <img :src="`/src/assets/tier/${userstore.loginUser.tier}.webp`" alt="유저 티어"
+                        class="img-fluid rounded-circle mb-3" width="120" height="120">
+                    <h4 class="mb-2">{{ userstore.loginUser.name }}</h4>
+                    <p class="text-muted mb-1"><strong>포지션:</strong> {{ userstore.loginUser.position }}</p>
+                    <p class="text-muted"><strong>티어:</strong> {{ userstore.loginUser.tier }}</p>
                 </div>
 
-
                 <!-- 유저 능력치 차트 -->
-                <UserstatItem />
-
+                <div class="col-md-9">
+                    <UserstatItem class="d-flex" />
+                </div>
 
             </div>
         </div>
 
+        <!-- 비로그인 상태 -->
+        <div class="card p-5 shadow" v-else>
+            <div class="row align-items-center">
 
-        <div class="card p-4 shadow" v-else>
-            <!-- 기본 예시 데이터 -->
-            <div class="row">
-                <div class="col-md-4">
-                    <h6>이름: 김철수</h6>
-                    <h6>포지션: 공격수</h6>
-                    <h6>티어: 다이아몬드</h6>
+                <!-- 유저 기본 정보 -->
+                <div class="col-md-3 text-center">
+                    <img src="/src/assets/tier/unranked.webp" alt="기본 티어" class="img-fluid rounded-circle mb-3" width="120"
+                        height="120">
+                    <h4 class="mb-2">손흥민</h4>
+                    <p class="text-muted mb-1"><strong>포지션:</strong> Forward</p>
+                    <p class="text-muted"><strong>티어:</strong> Unranked</p>
                 </div>
-                <!-- 유저 능력치 -->
-                <div class="col-md-4">
-                    <h6>능력치</h6>
-                    <div class="mb-2">슛: <span class="fw-bold">83</span></div>
-                    <div class="mb-2">패스: <span class="fw-bold">76</span></div>
-                    <div class="mb-2">속력: <span class="fw-bold">81</span></div>
-                    <div class="mb-2">체력: <span class="fw-bold">81</span></div>
-                    <div class="mb-2">드리블: <span class="fw-bold">80</span></div>
+
+                <!-- 유저 능력치 차트 -->
+                <div class="col-md-9">
+                    <UserstatItem class="d-flex" />
                 </div>
-                <!-- 닮은 선수 -->
-                <div class="col-md-4 text-center">
-                    <h6>나와 닮은 선수</h6>
-                    <img src="../../assets/Son.png" alt="Logo" width="180rem" height="260rem">
-                </div>
+
             </div>
         </div>
     </div>
@@ -59,16 +54,33 @@ import UserstatItem from "../userstat/UserstatItem.vue";
 const userstore = useUserStore();
 
 onMounted(() => {
-    console.log('마운트됏음')
-    console.log(userstore.loginUser.userid)
     if (userstore.loginUser.userid) {
-        userstore.getUserstat(userstore.loginUser.userid)
+        userstore.getUserstat(userstore.loginUser.userid);
     }
-})
+});
 </script>
 
 <style scoped>
+h2 {
+    font-weight: bold;
+    color: #343a40;
+}
 .card {
     background-color: #f8f9fa;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+img.rounded-circle {
+    border: 2px solid #ddd;
+    padding: 5px;
+    background: #fff;
+}
+
+h4 {
+    font-weight: bold;
+    color: #343a40;
 }
 </style>

@@ -19,10 +19,8 @@ export const useStatStore = defineStore('stat', () => {
         url: REST_STAT_API_URL + "/avg",
         params: { userId },
       });
-      // console.log(res.data);
       userstatavg.value = res.data;
     } catch (error) {
-      // console.error("스탯 조회 실패:", error.response?.data || error.message);
       userstatavg.value = {}; // 에러 발생 시 초기화
     }
   };
@@ -35,8 +33,9 @@ export const useStatStore = defineStore('stat', () => {
         params : {userId : userid}
       }).then((response)=>{
         myKLeaguer.value = response.data
+        console.log("mykleague")
+        console.log(myKLeaguer.value)
       }).catch((err)=>{
-        console.log(err)
       })
     } catch (error){
       
@@ -62,5 +61,8 @@ export const useStatStore = defineStore('stat', () => {
     
   }
 
-  return {userstatavg, getStat,getMyLeague, myKLeaguer, userstatList,getStatList }
+
+
+
+  return {userstatavg, getStat,getMyLeague, myKLeaguer, userstatList,getStatList, }
 })

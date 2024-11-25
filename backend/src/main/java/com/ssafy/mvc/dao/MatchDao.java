@@ -20,7 +20,7 @@ public interface MatchDao {
 	
 	
 	//경기 목록 조회
-	List<Match> searchByCondition (SearchCondition condition);
+	List<Match> searchByCondition (String region);
 	
 	//특정 경기 세부 정보 조회
 	Match selectOne (int id);
@@ -39,6 +39,13 @@ public interface MatchDao {
 	String matchAvgTier(int matchId);
 
 
-	List<Match> selectStadiumDayMatch(int id, String date);
+	List<Match> selectStadiumDayMatch(int id, String date1, String date2);
+	
+	
+	//추천 매치 목록 가져오기
+	List<Match> RecommandMatchList(String district, String province);
+
+
+	List<Match> getMatchManagerList(int id);
 	
 }
