@@ -8,10 +8,10 @@ WORKDIR /app
 COPY . .
 
 # Maven 빌드
-RUN ./mvnw clean package
+RUN chmod +x ./mvnw && ./mvnw clean package
 
-# 실행
-CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
-
-
+# 컨테이너에서 포트 노출
 EXPOSE 8080
+
+# Render의 환경 변수 PORT 사용
+CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar", "--server.port=${PORT}"]
