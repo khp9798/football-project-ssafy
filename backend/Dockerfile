@@ -12,3 +12,6 @@ RUN ./mvnw clean package
 
 # 실행
 CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
+
+
+EXPOSE 8080
